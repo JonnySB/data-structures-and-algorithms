@@ -144,22 +144,47 @@ class LinkedList:
         
     
     def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+        while True:
+            if fast == None or fast.next == None:
+                return slow
+            else:
+                slow = slow.next
+                fast = fast.next.next
+
+    def has_loop(self):
+        slow = self.head
+        fast = self.head
+        counter = 0
+        while True:
+            if fast == None or fast.next == None:
+                return False
+            if slow == fast and counter > 0:
+                return True
+            counter += 1
+            slow = slow.next
+            fast = fast.next.next
+
+    def find_kth_from_end(self, k):
         pass
+        
 
-
+    
 
 
 
 my_linked_list = LinkedList(1)
-
 my_linked_list.append(2)
-
 my_linked_list.append(3)
-
 my_linked_list.append(4)
-
 my_linked_list.append(5)
+my_linked_list.append(6)
+my_linked_list.append(7)
+my_linked_list.append(8)
 
-my_linked_list.reverse()
+
 
 my_linked_list.print_as_list()
+print(my_linked_list.find_middle_node().value)
+
