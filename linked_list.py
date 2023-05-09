@@ -1,5 +1,7 @@
 """
-Linked List Module
+Linked List Module containing linked list class with
+associated basic function methods and common interveriw style
+questions.
 """
 
 
@@ -176,4 +178,3 @@ my_linked_list.append(6)
 my_linked_list.append(7)
 my_linked_list.append(8)
 my_linked_list.print_as_list()
-print(my_linked_list.find_middle_node().value)
