@@ -158,3 +158,44 @@ class LinkedList:
             counter += 1
             slow = slow.next
             fast = fast.next.next
+
+    def reverse_between(self,m,n):
+        if self.length == 0:
+            return
+        
+        next_is_dummy_head = Node(None)  # Edge case, if sublist starts at index 0
+        next_is_dummy_head.next = self.head
+        node_before_sublist = next_is_dummy_head
+
+        for _ in range(m):
+            node_before_sublist = node_before_sublist.next
+
+        working_pointer = node_before_sublist.next
+
+        for _ in range(n - m):
+            node_to_be_extracted = working_pointer.next
+            working_pointer.next = node_to_be_extracted.next
+            node_to_be_extracted.next = node_before_sublist.next
+            node_before_sublist.next = node_to_be_extracted
+
+        while working_pointer.next:
+            working_pointer = working_pointer.next
+
+        self.tail = working_pointer
+        self.head = next_is_dummy_head.next
+
+    def remove_duplicates(self):
+        current_node = self.head
+        values_set = set()
+        
+        while current_node:
+
+            if current_node.value in values_set:
+                pass
+
+            else:
+                previous_node = current_node
+                print(f'{current_node.value}')
+
+            values_set.add(current_node.value)
+            current_node = current_node.next
