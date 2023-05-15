@@ -1,4 +1,5 @@
 """
+Contains the linked list class
 """
 
 
