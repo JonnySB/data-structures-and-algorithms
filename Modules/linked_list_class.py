@@ -161,11 +161,12 @@ class LinkedList:
             slow = slow.next
             fast = fast.next.next
 
-    def reverse_between(self,m,n):
+    def reverse_between(self, m, n):
         if self.length == 0:
             return
-        
-        next_is_dummy_head = Node(None)  # Edge case, if sublist starts at index 0
+
+        # Edge case, if sublist starts at index 0
+        next_is_dummy_head = Node(None)
         next_is_dummy_head.next = self.head
         node_before_sublist = next_is_dummy_head
 
@@ -189,7 +190,7 @@ class LinkedList:
     def partition_list(self, x):
         if not self.head:
             return None
-        
+
         low_ll_dummy = Node(0)
         high_ll_dummy = Node(0)
         low_ll_previous_node = low_ll_dummy

@@ -4,8 +4,9 @@ Douely linked list class definition
 
 
 class Node():
-    """Node class with a next and previous pointer to add to doubly linked list"""
-    
+    """
+    Node class with a next and previous pointer to add to doubly linked list
+    """
     def __init__(self, value):
         self.value = value
         self.next_node = None
