@@ -66,6 +66,7 @@ class LinkedList:
         else:  # If list is not empty
             new_node.next = self.head
             self.head = new_node
+        self.length += 1
         return True
 
     def pop_first(self):
@@ -77,7 +78,7 @@ class LinkedList:
         self.length -= 1
         if self.length == 0:  # Edge case: 1 item list
             self.tail = None
-        return temp.value
+        return temp
 
     def get(self, index):
         if index >= self.length or index < 0:  # Edge cases
@@ -184,18 +185,39 @@ class LinkedList:
         self.tail = working_pointer
         self.head = next_is_dummy_head.next
 
-    def remove_duplicates(self):
-        current_node = self.head
-        values_set = set()
+    def partition_list(self, x):
+        if not self.head:
+            return None
         
+        low_ll_dummy = Node(0)
+        high_ll_dummy = Node(0)
+        low_ll_previous_node = low_ll_dummy
+        high_ll_previous_node = high_ll_dummy
+        current_node = self.head
+
         while current_node:
-
-            if current_node.value in values_set:
-                pass
-
+            if current_node.value < x:
+                low_ll_previous_node.next = current_node
+                low_ll_previous_node = current_node
             else:
-                previous_node = current_node
-                print(f'{current_node.value}')
+                high_ll_previous_node.next = current_node
+                high_ll_previous_node = current_node
+            current_node = current_node.next
 
-            values_set.add(current_node.value)
+        low_ll_previous_node.next = high_ll_dummy.next
+        high_ll_previous_node.next = None
+
+        self.head = low_ll_dummy.next
+
+    def remove_duplicates(self):
+        values_set = set()
+        previous_node = None
+        current_node = self.head
+        while current_node:
+            if current_node.value in values_set:
+                previous_node.next = current_node.next
+                self.length -= 1
+            else:
+                values_set.add(current_node.value)
+                previous_node = current_node
             current_node = current_node.next
