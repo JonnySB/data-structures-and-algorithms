@@ -8,6 +8,13 @@ from unittest import TestCase, main
 from doubly_linked_list import DoublyLinkedList
 
 
+def create_dll_from_list(list):
+    dll = DoublyLinkedList(list[0])
+    for item in list[1:]:
+        dll.append(item)
+    return dll
+
+
 class TestDoublyLinkedList(TestCase):
     """tests for doubly linked list """
 
@@ -40,7 +47,7 @@ class TestDoublyLinkedList(TestCase):
             self.dll_length_5.return_as_list(),
             self.list_length_5,
             )
-    
+
     def test_remove_when_index_less_than_zero(self):
         """Tests returns none when index is less than zero"""
         result = self.dll_none.remove(-1)
@@ -87,13 +94,15 @@ class TestDoublyLinkedList(TestCase):
         self.assertIsNone(self.dll_length_1.tail)
         self.assertEqual(self.dll_length_1.length, 0)
 
-
     def test_remove_middle(self):
         """Tests removing dll item"""
         index = 2
         self.dll_length_5.remove(index)
         self.list_length_5.pop(index)
-        self.assertEqual(self.dll_length_5.return_as_list(), self.list_length_5)
+        self.assertEqual(
+            self.dll_length_5.return_as_list(),
+            self.list_length_5,
+            )
 
     def test_remove_length(self):
         """Tests length after removing ll item"""
@@ -106,6 +115,32 @@ class TestDoublyLinkedList(TestCase):
         """Test swapping first and last value"""
         self.dll_length_5.swap_first_last()
         self.assertEqual(self.dll_length_5.return_as_list(), [5, 2, 3, 4, 1])
+
+    def test_is_palindrome(self):
+        """Test whether list is palidrome"""
+        dll = create_dll_from_list([1, 2, 3, 4, 3, 2, 1])
+        self.assertTrue(dll.is_palindrome())
+
+        dll = create_dll_from_list([1, 2, 3, 3, 2, 1])
+        self.assertTrue(dll.is_palindrome())
+
+        dll = create_dll_from_list([1, 2, 3, 4, 3, 2])
+        self.assertFalse(dll.is_palindrome())
+
+        dll = create_dll_from_list([1])
+        dll.pop()
+        self.assertTrue(dll.is_palindrome())
+
+    def test_swap_pairs(self):
+        """Tests swap pairs and len 0 & 1 edge cases"""
+
+        dll = create_dll_from_list([1, 2, 3, 4])
+        dll.swap_pairs()
+        self.assertEqual(dll.return_as_list(), [2, 1, 4, 3])
+
+        dll = create_dll_from_list([1, 2, 3, 4, 5])
+        dll.swap_pairs()
+        self.assertEqual(dll.return_as_list(), [2, 1, 4, 3, 5])
 
 
 if __name__ == '__main__':

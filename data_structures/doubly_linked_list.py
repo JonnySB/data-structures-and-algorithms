@@ -137,23 +137,69 @@ class DoublyLinkedList:
         if index < 0 or index >= self.length:
             return None
         if index == 0:
-            return self.pop_first()    
+            return self.pop_first()
         if index == self.length - 1:
             return self.pop()
 
         temp_node = self.get(index)
 
         temp_node.next.prev = temp_node.prev
-        temp_node.prev.next = temp_node.next 
+        temp_node.prev.next = temp_node.next
         temp_node.prev = None
         temp_node.next = None
-        
-        self.length -=1
+
+        self.length -= 1
         return temp_node
-    
+
     def swap_first_last(self):
+        "Swap head and tail values"
         if self.head is None or self.head == self.tail:
             return
         self.head.value, self.tail.value = self.tail.value, self.head.value
-        
 
+    def reverse(self):
+        """Reverse doubly linked list"""
+        temp = self.head
+        while temp:
+            temp.next, temp.prev = temp.prev, temp.next
+            temp = temp.prev
+        self.head, self.tail = self.tail, self.head
+
+    def is_palindrome(self):
+        if self.length <= 1:
+            return True
+        temp_front = self.head
+        temp_back = self.tail
+        for _ in range(self.length // 2):
+            if temp_front.value == temp_back.value:
+                temp_front = temp_front.next
+                temp_back = temp_back.prev
+            else:
+                return False
+        return True
+
+    def swap_pairs(self):
+        """Swap pairs by iterating through using a train of three Nodes"""
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        while self.head and self.head.next:
+            first = self.head
+            second = self.head.next
+
+            prev.next = second
+            first.next = second.next
+            second.next = first
+
+            second.prev = prev
+            first.prev = second
+            if first.next:
+                first.next.prev = first
+
+            self.head = first.next
+            prev = first
+
+        self.head = dummy.next
+        if self.head:
+            self.head.prev = None
