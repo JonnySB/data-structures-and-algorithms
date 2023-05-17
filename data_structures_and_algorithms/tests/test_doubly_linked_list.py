@@ -4,9 +4,9 @@ developing the doubly linked list class. tested on
 return_as_list and used for TDD with remove method.
 """
 from unittest import TestCase, main
-
-from doubly_linked_list import DoublyLinkedList
-
+import sys
+sys.path.append('../')
+from data_structures_and_algorithms.doubly_linked_list import DoublyLinkedList
 
 def create_dll_from_list(list):
     dll = DoublyLinkedList(list[0])

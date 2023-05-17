@@ -2,7 +2,9 @@
 Tests for stacks class
 """
 from unittest import TestCase, main
-from stacks import Stack
+import sys
+sys.path.append('../')
+from data_structures_and_algorithms.stacks import Stack
 
 def create_stack_from_list(lst: list) -> Stack:
     """Return stack from list"""
@@ -32,6 +34,21 @@ class TestStack(TestCase):
         """test push through the create_stack_from_list helper function"""
         self.assertEqual(self.stack.return_as_list(), self.test_list)
         self.assertEqual(self.stack.height, 6)
+
+    def test_pop(self):
+        """test pop from stack"""
+        temp_node = self.stack.pop()
+        self.assertEqual(temp_node.value, 6)
+        self.assertEqual(temp_node.next, None)
+        self.assertEqual(self.stack.top.value, 5)
+        self.assertEqual(self.stack.top.next.value, 4)
+        self.assertEqual(self.stack.height, 5)
+
+        temp_stack = Stack(1)
+        temp_stack.pop()
+        popped_node = temp_stack.pop()
+        self.assertEqual(popped_node, None)
+        self.assertEqual(temp_stack.height, 0)
         
 
 
