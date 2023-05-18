@@ -2,9 +2,12 @@
 Tests for stacks class
 """
 from unittest import TestCase, main
+
+from data_structures_and_algorithms.stacks import Stack
+
 import sys
 sys.path.append('../')
-from data_structures_and_algorithms.stacks import Stack
+
 
 def create_stack_from_list(lst: list) -> Stack:
     """Return stack from list"""
@@ -13,6 +16,7 @@ def create_stack_from_list(lst: list) -> Stack:
         stack.push(item)
     return stack
 
+
 class TestStack(TestCase):
     """Class containing tests for Stack and its methods"""
 
@@ -20,7 +24,7 @@ class TestStack(TestCase):
         list_to_stack = [1, 2, 3, 4, 5, 6]
         reverse_list = list_to_stack.copy()
         reverse_list.reverse()
-        
+
         self.stack = create_stack_from_list(list_to_stack)
         self.test_list = reverse_list
 
@@ -49,7 +53,6 @@ class TestStack(TestCase):
         popped_node = temp_stack.pop()
         self.assertEqual(popped_node, None)
         self.assertEqual(temp_stack.height, 0)
-        
 
 
 if __name__ == '__main__':

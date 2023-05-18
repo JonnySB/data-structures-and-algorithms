@@ -2,9 +2,11 @@
 Tests for the queue's class
 """
 from unittest import TestCase, main
+
+from data_structures_and_algorithms.queues import Queue, Node
+
 import sys
 sys.path.append('../')
-from data_structures_and_algorithms.queues import Queue, Node
 
 
 class TestNode(TestCase):
@@ -13,7 +15,7 @@ class TestNode(TestCase):
     def test_node_constructor(self):
         value = 32
         node = Node(value)
-        
+
         self.assertEqual(node.value, value)
         self.assertIsNone(node.next)
 
@@ -50,6 +52,24 @@ class TestQueue(TestCase):
         self.assertEqual(self.queue.first.value, self.queue_list[0])
         self.assertEqual(self.queue.length, len(self.queue_list))
         self.assertEqual(self.queue.last.value, self.queue_list[-1])
+
+    def test_dequeue(self):
+        """tests dequeue works correctly and the front item is removed"""
+        dequeued_item = self.queue.dequeue()
+        self.assertEqual(dequeued_item.value, self.queue_list[0])
+        self.assertIsNone(dequeued_item.next)
+
+        self.assertEqual(self.queue.first.value, self.queue_list[1])
+        self.assertEqual(self.queue.last.value, self.queue_list[-1])
+        self.assertEqual(self.queue.return_as_list(), self.queue_list[1:])
+        self.assertEqual(self.queue.length, len(self.queue_list) - 1)
+
+        queue = Queue(1)
+        queue.dequeue()
+        dequeued_item = queue.dequeue()
+        self.assertIsNone(dequeued_item)
+        self.assertIsNone(queue.first)
+        self.assertIsNone(queue.last)
 
 
 if __name__ == "__main__":
