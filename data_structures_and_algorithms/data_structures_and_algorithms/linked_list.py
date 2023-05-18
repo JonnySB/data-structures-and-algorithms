@@ -12,7 +12,7 @@ class Node:
 class LinkedList:
 
     def __init__(self, value):
-        """Create new node"""
+        """Create linked list and add new node"""
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node

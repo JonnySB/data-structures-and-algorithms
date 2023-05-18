@@ -46,7 +46,3 @@ class Stack():
         temp_node.next = None
         self.height -= 1
         return temp_node
-
-
-
-    
