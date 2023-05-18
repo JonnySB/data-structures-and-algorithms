@@ -2,6 +2,7 @@
 Stacks class
 """
 
+
 class Node():
     """Class for instantiating Linked List nodes"""
 

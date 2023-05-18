@@ -8,7 +8,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-    
+
 
 class Queue:
     """class containing queue and queue methods"""
@@ -46,7 +46,7 @@ class Queue:
             return None
         if self.length == 1:
             self.last = None
-        
+
         temp_node = self.first
         self.first = self.first.next
         temp_node.next = None
