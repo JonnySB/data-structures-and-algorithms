@@ -3,10 +3,9 @@ Tests for the queue's class
 """
 from unittest import TestCase, main
 
-from data_structures_and_algorithms.queues import Queue, Node
-
 import sys
 sys.path.append('../')
+from data_structures_and_algorithms.queues import Queue, Node
 
 
 class TestNode(TestCase):

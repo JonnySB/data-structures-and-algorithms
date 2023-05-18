@@ -3,10 +3,9 @@ Tests for stacks class
 """
 from unittest import TestCase, main
 
-from data_structures_and_algorithms.stacks import Stack
-
 import sys
 sys.path.append('../')
+from data_structures_and_algorithms.stacks import Stack
 
 
 def create_stack_from_list(lst: list) -> Stack:
