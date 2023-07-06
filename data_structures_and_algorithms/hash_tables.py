@@ -48,3 +48,22 @@ print(my_hash_table.get_item("washers"))
 print(my_hash_table.get_item("lumber"))
 
 print(my_hash_table.keys())
+
+
+# Using the above structure, compare two lists to see if they have any common elements::
+
+arr1 = [2,7,4]
+arr2 = [9,5,2]
+arr3 = [10,6,3]
+
+def commonValues(arr1, arr2):
+    hash_table = HashTable()
+    for num in arr1:
+        hash_table.set_item(str(num), True)
+    for num in arr2:
+        if hash_table.get_item(str(num)) is not None:
+            return True
+    return False 
+
+print(commonValues(arr1, arr2))
+print(commonValues(arr1, arr3))
