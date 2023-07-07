@@ -20,7 +20,6 @@ Output
 Your function should return a list of tuples, where each tuple contains two integers from arr1 and arr2 that add up to target.
 """
 
-
 def find_pairs(arr1, arr2, target):
     set1 = set(arr1)
     output = []
