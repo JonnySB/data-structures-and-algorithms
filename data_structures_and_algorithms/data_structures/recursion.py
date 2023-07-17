@@ -9,5 +9,4 @@ def pyramid(n):
     return n + pyramid(n-1)
 
 print(factorial(5))
-print(pyramid(10))
 
