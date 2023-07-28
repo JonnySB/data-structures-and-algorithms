@@ -107,7 +107,7 @@ class LinkedList:
             sorted_until = current
 
     """
-    Buble sort but actually swapping the nodes rather than just updating their values:
+    Bubble sort but actually swapping the nodes rather than just updating their values:
     """
 
     def swap_nodes(self, x, y):
@@ -179,4 +179,3 @@ my_linked_list.bubble_sort_swapping_nodes()
 
 print("\nSorted Linked List:")
 print(my_linked_list.print_as_list())
-
