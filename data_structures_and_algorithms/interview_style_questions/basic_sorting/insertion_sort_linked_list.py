@@ -36,12 +36,24 @@ class LinkedList:
         self.length += 1
 
     def insertion_sort(self):
-        if self.length() < 2:
+        if self.length < 2:
             return
+        sorted_until = self.head
+        while sorted_until:
+            target = sorted_until
+            compare = target.next
+            while compare is not None:
+                if compare.value < target.value:
+                    target.value, compare.value = compare.value, target.value
+                compare = compare.next
+            sorted_until = sorted_until.next
 
 
-my_linked_list.append(2)
+
+
+
 my_linked_list = LinkedList(4)
+my_linked_list.append(2)
 my_linked_list.append(6)
 my_linked_list.append(5)
 my_linked_list.append(1)
