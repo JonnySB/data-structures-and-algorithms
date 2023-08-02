@@ -22,10 +22,25 @@ class MinHeap:
         while current_index > 0 and self.heap[current_index] < self.heap[self._parent(current_index)]:
             self._swap(current_index, self._parent(current_index))
             current_index = self._parent(current_index)
-        
-        
+    
+    def _sink_down(self, index):
+        min_index = index
+        while True:
+            left_index = self._right_child(index)
+            right_index = self._left_child(index)
+        #add code here
 
- 
+
+
+    def remove(self):
+        if len(self.heap) == 0:
+            return None
+        if len(self.heap) == 1:
+            return self.heap.pop()
+        min_value = self.heap[0]
+        self.heap[0] = self.heap.pop()
+        self._sink_down(0)
+        return min_value      
  
 myheap = MinHeap()
 myheap.insert(12)
