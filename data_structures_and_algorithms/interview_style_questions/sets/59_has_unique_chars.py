@@ -13,7 +13,6 @@ def has_unique_chars(my_string):
             char_set.add(letter)
     return True
 
-
 print(has_unique_chars('abcdefg'))  # should return True
 print(has_unique_chars('hello'))  # should return False
 print(has_unique_chars(''))  # should return True
