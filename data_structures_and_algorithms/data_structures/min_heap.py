@@ -39,8 +39,6 @@ class MinHeap:
                 index = min_index
             else:
                 return
-            
-
 
     def remove(self):
         if len(self.heap) == 0:
@@ -64,15 +62,7 @@ print(myheap.heap)  # [6, 8, 10, 12]
 
 myheap.remove()
 
-print(myheap.heap)  # [4, 6, 10, 12, 8]
-
-myheap.remove()
-
-print(myheap.heap)  # [4, 6, 10, 12, 8]
-
-myheap.remove()
-
-print(myheap.heap)  # [4, 6, 10, 12, 8]
+Rrint(myheap.heap)  # [4, 6, 10, 12, 8]
 
 """
     EXPECTED OUTPUT:
