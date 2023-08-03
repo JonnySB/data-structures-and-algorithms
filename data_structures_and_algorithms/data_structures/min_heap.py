@@ -62,7 +62,19 @@ print(myheap.heap)  # [6, 8, 10, 12]
 
 myheap.remove()
 
-Rrint(myheap.heap)  # [4, 6, 10, 12, 8]
+print(myheap.heap)  # [4, 6, 10, 12, 8]
+
+myheap.remove()
+
+print(myheap.heap)  # [4, 6, 10, 12, 8]
+
+myheap.remove()
+
+print(myheap.heap)  # [4, 6, 10, 12, 8]
+
+myheap.remove()
+
+print(myheap.heap)  # [4, 6, 10, 12, 8]
 
 """
     EXPECTED OUTPUT:
