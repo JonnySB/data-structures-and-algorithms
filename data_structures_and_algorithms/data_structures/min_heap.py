@@ -1,4 +1,3 @@
-
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -28,8 +27,19 @@ class MinHeap:
         while True:
             left_index = self._right_child(index)
             right_index = self._left_child(index)
-        #add code here
 
+            if left_index < len(self.heap) and self.heap[min_index] > self.heap[left_index]:
+                min_index = left_index
+
+            if right_index < len(self.heap) and self.heap[min_index] > self.heap[right_index]:
+                min_index = right_index
+
+            if index != min_index:
+                self._swap(index, min_index)
+                index = min_index
+            else:
+                return
+            
 
 
     def remove(self):
@@ -47,17 +57,22 @@ myheap.insert(12)
 myheap.insert(10)
 myheap.insert(8)
 myheap.insert(6)
+myheap.insert(4)
+myheap.insert(8)
 
 print(myheap.heap)  # [6, 8, 10, 12]
 
-myheap.insert(4)
+myheap.remove()
 
 print(myheap.heap)  # [4, 6, 10, 12, 8]
 
-myheap.insert(2)
+myheap.remove()
 
-print(myheap.heap)  # [2, 6, 4, 12, 8, 10]
+print(myheap.heap)  # [4, 6, 10, 12, 8]
 
+myheap.remove()
+
+print(myheap.heap)  # [4, 6, 10, 12, 8]
 
 """
     EXPECTED OUTPUT:
