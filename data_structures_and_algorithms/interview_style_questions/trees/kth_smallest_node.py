@@ -43,17 +43,44 @@ class BinarySearchTree:
                 temp = temp.right
 
     def kth_smallest(self, k):
-        
-        def traverse(current_node, k):
-            if current_node.left is not None:
-                traverse(current_node.left, k)
-            print(k)
-            if k == 1:
-                print(current_node.value)
+        stack = []
+        node = self.root
+        while stack or node:
+            while node:
+                stack.append(node)
+                node = node.left
+            node = stack.pop()
             k -= 1
-            if current_node.right is not None:
-                traverse(current_node.right, k)
-        traverse(self.root, k)
+            if k == 0:
+                return node.value
+            node = node.right   
+        return None
+
+    def kth_smallest_recursive(self, k):
+        self.kth_smallest_count = 0
+        return self.kth_smallest_recursive_helper(self.root, k)
+    
+    def kth_smallest_recursive_helper(self, node, k):
+        if node is None:
+            return None
+        
+        left_result = self.kth_smallest_recursive_helper(node.left, k)
+        if left_result is not None:
+            return left_result
+
+        self.kth_smallest_count += 1
+        if self.kth_smallest_count == k:
+            return node.value
+
+        right_result = self.kth_smallest_recursive_helper(node.right, k)
+        if right_result is not None:
+            return right_result
+
+        return None
+
+
+
+
 
 bst = BinarySearchTree()
 
@@ -66,7 +93,11 @@ bst.insert(6)
 bst.insert(8)
 
 print(bst.kth_smallest(1))  # Expected output: 2
-# print(bst.kth_smallest(3))  # Expected output: 4
+print(bst.kth_smallest(3))  # Expected output: 4
+
+print(bst.kth_smallest_recursive(1))  # Expected output: 2
+print(bst.kth_smallest_recursive(3))  # Expected output: 4
+
 
 
 
