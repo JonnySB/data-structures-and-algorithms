@@ -68,16 +68,16 @@ def checkInclusion(s1: str, s2: str) -> bool:
         # increase window size and add 1 to array index of letter
         index = ord(s2[r]) - ord("a")
         s2Count[index] += 1
-        # inc/ dec matches depending if in s1
+        # inc matches if exact frequency of letter in s1Count
         if s1Count[index] == s2Count[index]:
             matches += 1
+        # dec matches if now more than exact frequency of letter in s1Count
         elif s1Count[index] + 1 == s2Count[index]:
             matches -= 1
 
-        # decrease window size and remove 1 from array index of letter
+        # Same as above, but closing window.
         index = ord(s2[l]) - ord("a")
         s2Count[index] -= 1
-        # inc/ dec matches depending if in s1
         if s1Count[index] == s2Count[index]:
             matches += 1
         elif s1Count[index] - 1 == s2Count[index]:
