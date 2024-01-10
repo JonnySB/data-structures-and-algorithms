@@ -31,7 +31,7 @@ Constraints:
 
 
 # O(k(n-k)) i.e. slow
-def maxSlidingWindow(nums: list[int], k: int) -> list[int]:
+def maxSlidingWindowOld(nums: list[int], k: int) -> list[int]:
     res = []
 
     l = 0
@@ -49,7 +49,39 @@ def getMax(nums):
     return max
 
 
-# O(n)
+import collections
+
+
+# O(n) - Monotonic Decreasing Queue, to get min
+def maxSlidingWindow(nums: list[int], k: int) -> list[int]:
+    output = []
+    l = 0
+    r = 0
+    q = collections.deque()
+
+    while r < len(nums):
+        # remove smaller items if present in queue (i.e. ensure starts with)
+        # highest value
+        while q and nums[q[-1]] < nums[r]:
+            q.pop()
+
+        # add index of current element
+        q.append(r)
+
+        # if left index is greater than left most index in queue
+        # then remove out of bounds item from queue
+        if l > q[0]:
+            q.popleft()
+
+        # wait until window is at least size k before:
+        # Appending the max to the output (left most in queue)
+        # Iterating l one index forwards
+        if (r + 1) >= k:
+            output.append(nums[q[0]])
+            l += 1
+        r += 1
+
+    return output
 
 
 nums = [1, 3, -1, -3, 5, 3, 6, 7]
