@@ -46,3 +46,21 @@ Constraints:
     All the values of position are unique.
     0 < speed[i] <= 106
 """
+
+
+def carFleet(target: int, position: list[int], speed: list[int]) -> int:
+    position_speed = sorted(zip(position, speed), reverse=True)
+    stack = []
+
+    for s, v in position_speed:
+        finish_time = (target - s) / v  # finishing time = distance_to_finish / speed
+
+        if not stack or finish_time > stack[-1]:
+            stack.append(finish_time)
+    return len(stack)
+
+
+target = 12
+position = [10, 8, 0, 5, 3]
+speed = [2, 4, 1, 1, 3]
+print(carFleet(target, position, speed))
