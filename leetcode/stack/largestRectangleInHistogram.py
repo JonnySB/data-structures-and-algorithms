@@ -20,28 +20,26 @@ Constraints:
 
 
 def largestRectangleArea(heights: list[int]) -> int:
-    if len(heights) == 1:
-        return heights[0]
-    l = 0
-    r = len(heights) - 1
-    stack = []  # monotonic increasing stack
-    while l <= r:
-        l_value = heights[l]
-        r_value = heights[r]
-        curr_sum = min(l_value, r_value) * ((r - l) + 1)
+    stack = []  # pair: [index, height]
+    maxArea = 0
 
-        # check if curr_sum lower than previous stack values
-        while stack and curr_sum <= stack[-1]:
-            stack.pop()
-        stack.append(curr_sum)
+    for i in range(len(heights)):
+        h = heights[i]
+        start = i
+        while stack and stack[-1][1] > h:
+            popped_i, popped_h = stack.pop()
+            maxArea = max(maxArea, (i - popped_i) * popped_h)
+            start = popped_i
+        stack.append([start, h])
 
-        if l_value <= r_value:
-            l += 1
-        else:
-            r -= 1
-
-    return stack[-1]
+    for i, h in stack:
+        maxArea = max(maxArea, h * (len(heights) - i))
+    return maxArea
 
 
 heights = [2, 1, 5, 6, 2, 3]
+print(largestRectangleArea(heights))
+
+
+heights = [2, 4]
 print(largestRectangleArea(heights))
