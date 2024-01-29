@@ -25,17 +25,17 @@ Constraints:
 
 def search(nums: list[int], target: int) -> int:
     l = 0
-    r = len(nums) - 1
+    r = len(nums) + 1
+
     while l <= r:
-        # calculated like this as opposed to ((r + l) // 2) to avoid int
-        # overflow. I.e. adding two int that are close to their max value.
         m = l + ((r - l) // 2)
-        if nums[m] > target:
-            r = m - 1
-        elif nums[m] < target:
-            l = m + 1
-        else:
+        v = nums[m]
+        if v == target:
             return m
+        elif target < v:
+            r = m - 1
+        else:
+            l = m + 1
     return -1
 
 
@@ -46,3 +46,18 @@ print(search(nums, target))
 nums = [-1, 0, 3, 5, 9, 12]
 target = 2
 print(search(nums, target))
+
+
+#    l = 0
+#    r = len(nums) - 1
+#    while l <= r:
+#        # calculated like this as opposed to ((r + l) // 2) to avoid int
+#        # overflow. I.e. adding two int that are close to their max value.
+#        m = l + ((r - l) // 2)
+#        if nums[m] > target:
+#            r = m - 1
+#        elif nums[m] < target:
+#            l = m + 1
+#        else:
+#            return m
+#    return -1
