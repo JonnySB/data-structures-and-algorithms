@@ -33,7 +33,21 @@ Constraints:
 
 
 def minEatingSpeed(piles: list[int], h: int) -> int:
-    pass
+    l = 1
+    r = max(piles)
+    res = r
+    while l <= r:
+        k = (l + r) // 2
+        total_time = 0
+        for p in piles:
+            total_time += int(p / k) + (p % k > 0)
+
+        if total_time <= h:
+            res = min(res, k)
+            r = k - 1
+        else:
+            l = k + 1
+    return res
 
 
 piles = [3, 6, 7, 11]
