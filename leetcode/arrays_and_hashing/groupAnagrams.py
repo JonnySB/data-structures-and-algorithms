@@ -36,3 +36,6 @@ def groupAnagrams(strs: list[str]) -> list[list[str]]:
             anagram_map[sorted_word] = [word]
 
     return list(anagram_map.values())
+
+
+groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])

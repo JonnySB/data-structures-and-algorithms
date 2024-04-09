@@ -35,3 +35,7 @@ def containsDuplicate(nums: list[int]) -> bool:
             return True
         hash_map[num] = hash_map.get(num, 0) + 1
     return False
+
+
+nums = [1, 2, 3, 1]
+containsDuplicate(nums)
