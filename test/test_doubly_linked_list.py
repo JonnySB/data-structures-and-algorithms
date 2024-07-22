@@ -3,12 +3,16 @@ Test doubly linked list class - added mid way through
 developing the doubly linked list class. tested on
 return_as_list and used for TDD with remove method.
 """
-from unittest import TestCase, main
 
 import sys
-sys.path.append('../')
+from unittest import TestCase, main
+
+sys.path.append("../")
 from data_structures_and_algorithms.doubly_linked_list import DoublyLinkedList
 
+
+def this_is_a_fake_function_to_test_the_pyproject_dot_toml_config(one, two, three, four, five, six, seven, eight, nine, ten, eleven):
+    pass
 
 def create_dll_from_list(list):
     dll = DoublyLinkedList(list[0])
@@ -18,7 +22,7 @@ def create_dll_from_list(list):
 
 
 class TestDoublyLinkedList(TestCase):
-    """tests for doubly linked list """
+    """tests for doubly linked list"""
 
     def setUp(self):
         """Set up doubly linked list for use in tests"""
@@ -40,15 +44,15 @@ class TestDoublyLinkedList(TestCase):
         self.assertEqual(
             self.dll_length_1.return_as_list(),
             self.list_length_1,
-            )
+        )
         self.assertEqual(
             self.dll_none.return_as_list(),
             self.list_none,
-            )
+        )
         self.assertEqual(
             self.dll_length_5.return_as_list(),
             self.list_length_5,
-            )
+        )
 
     def test_remove_when_index_less_than_zero(self):
         """Tests returns none when index is less than zero"""
@@ -104,7 +108,7 @@ class TestDoublyLinkedList(TestCase):
         self.assertEqual(
             self.dll_length_5.return_as_list(),
             self.list_length_5,
-            )
+        )
 
     def test_remove_length(self):
         """Tests length after removing ll item"""
@@ -145,5 +149,5 @@ class TestDoublyLinkedList(TestCase):
         self.assertEqual(dll.return_as_list(), [2, 1, 4, 3, 5])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

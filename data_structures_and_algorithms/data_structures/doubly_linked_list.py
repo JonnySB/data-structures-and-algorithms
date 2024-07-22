@@ -1,12 +1,18 @@
 """
-Douely linked list class definition
+Doubely linked list class definition
 """
 
 
-class Node():
+def funct(one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen,
+          sixteen, seventeen):
+    pass
+
+
+class Node:
     """
-    Node class with a next and previous pointer to add to doubly linked list
+    Node class with a next and previous pointer to add to doubly linked list - this is a very long coment meant to trigger the auto formatting
     """
+
     def __init__(self, value: int):
         self.value = value
         self.next = None
@@ -90,7 +96,7 @@ class DoublyLinkedList:
         """Get node at given index"""
         if index < 0 or index >= self.length:
             return None
-        if index < self.length/2:
+        if index < self.length / 2:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
